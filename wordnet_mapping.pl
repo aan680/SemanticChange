@@ -32,8 +32,7 @@ run_mapping:-
     rdf_load('wn31.nt.gz', [graph('Wordnet.nt')]),
     main_consec,
     main_vsnow,
-    infer,
-    rdf_save_turtle('Driftalod.ttl', [graph(paper1), user_prefixes(true)]).
+    infer.
 
 main_consec:- %BEFORE RUNNING, SET THE DATE FUNCTION TO YEAR + 10!
     %b_setval(Unmatchedset, []),
@@ -114,7 +113,8 @@ predicate(OnsetDecade, OffsetDecade, Predicate):-
     atom_concat('semantic_change_', Period, Predicatename),
     atom_concat('http://project.ia.cwi.nl/semanticChange/', Predicatename,  Predicate).
 
-rdf_date(literal(type(_, String)), Y-M-D) :-
+rdf_date(Y-M-D, literal(type(Type, String))) :-
+    rdf_equal(Type, xsd:date),
     date_string(Y-M-D, String).
 
 date_string(Y-M-D, String) :-

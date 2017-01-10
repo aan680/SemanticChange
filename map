@@ -12,11 +12,11 @@
 :- initialization
     %G = mep,
     %rdf_attach_library('../demo/web/rdf'),
-    rdf_load('http://wordnet-rdf.princeton.edu/wn31.nt.gz', [graph('Wordnet.nt')]),
+    %rdf_load('http://wordnet-rdf.princeton.edu/wn31.nt.gz', [graph('Wordnet.nt')]),
     rdf_register_prefix('cwi', 'http://project.ia.cwi.nl/semanticChange/'),
     rdf_register_prefix('lemon', 'http://lemon-model.net/lemon#'),
     rdf_register_prefix('time', 'http://www.w3.org/2006/time#'),
-    rdf_register_prefix('xsd', 'http://www.w3.org/2001/XMLSchema')
+    %rdf_register_prefix('xsd', 'http://www.w3.org/2001/XMLSchema'),
     run_mapping,
     rdf_save_turtle('Driftalod.ttl', [graph(paper1), user_prefixes(true)]).
 
