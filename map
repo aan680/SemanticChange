@@ -13,11 +13,12 @@
     %G = mep,
     %rdf_attach_library('../demo/web/rdf'),
     %rdf_load('http://wordnet-rdf.princeton.edu/wn31.nt.gz', [graph('Wordnet.nt')]),
+    set_prolog_stack(global, limit(round(1e9))),
     rdf_register_prefix('cwi', 'http://project.ia.cwi.nl/semanticChange/'),
     rdf_register_prefix('lemon', 'http://lemon-model.net/lemon#'),
     rdf_register_prefix('time', 'http://www.w3.org/2006/time#'),
     %rdf_register_prefix('xsd', 'http://www.w3.org/2001/XMLSchema'),
     run_mapping,
-    rdf_save_turtle('Driftalod.ttl', [graph(paper1), user_prefixes(true)]).
+    rdf_save_turtle('Driftalod.ttl', [graph(paper1), user_prefixes(true), indent(0), single_line_bnodes(true)]).
 
 
