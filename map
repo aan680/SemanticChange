@@ -1,0 +1,23 @@
+#!/usr/bin/env swipl
+
+:- use_module(wordnet_mapping).
+:- use_module(library(semweb/turtle)).        % Turtle and TRiG
+:- use_module(library(semweb/rdf_ntriples)).
+:- use_module(library(semweb/rdf_zlib_plugin)).
+:- use_module(library(semweb/rdf_http_plugin)).
+:- use_module(library(http/http_ssl_plugin)).
+:- use_module(library(semweb/rdf_db)).
+:- use_module(library(semweb/rdf_turtle_write)).
+:- use_module(library(lists)).
+:- initialization
+    %G = mep,
+    %rdf_attach_library('../demo/web/rdf'),
+    rdf_load('http://wordnet-rdf.princeton.edu/wn31.nt.gz', [graph('Wordnet.nt')]),
+    rdf_register_prefix('cwi', 'http://project.ia.cwi.nl/semanticChange/'),
+    rdf_register_prefix('lemon', 'http://lemon-model.net/lemon#'),
+    rdf_register_prefix('time', 'http://www.w3.org/2006/time#'),
+    rdf_register_prefix('xsd', 'http://www.w3.org/2001/XMLSchema')
+    run_mapping,
+    rdf_save_turtle('Driftalod.ttl', [graph(paper1), user_prefixes(true)]).
+
+
