@@ -15,3 +15,4 @@ This is what script map does. It first loads WordNet (pre-downloaded as nt.gz) i
 - take the direct lexical match whenever possible, else match on the porter stemmed form;
 - if the word did not appear in WN but matches a WN form when stemmed, then define it as a lexicalvariant of that WN form;
 - convert the similarity score to a distance one using arccos.
+
